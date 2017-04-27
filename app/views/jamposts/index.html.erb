@@ -1,0 +1,14 @@
+<div class = 'create'>
+  <h2><%= link_to "Create a Jam Session", new_jampost_path %></h2>
+  <h2><%= link_to "Create a Drum Circle", new_jampost_path %></h2>
+</div>
+
+<% @jamposts.each do |jampost| %>
+  <p>
+    <%= link_to jampost.title, jampost %>
+  </p>
+  <p>
+    <%= image_tag jampost.img_url %>
+  </p>
+  <hr>
+<% end %>

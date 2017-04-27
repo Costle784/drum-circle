@@ -1,0 +1,21 @@
+<h2>New Jam!</h2>
+
+<%= form_for @jampost do |f| %>
+  <p>
+    <%= f.label "#{:title}:" %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label "#{:img_url}:" %>
+    <%= f.text_field :img_url %>
+  </p>
+  <p>
+    <%= f.label "#{:location}:" %>
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label "#{:body}:" %>
+    <%= f.text_field :body %>
+  </p>
+  <%= f.submit %>
+<% end %>
