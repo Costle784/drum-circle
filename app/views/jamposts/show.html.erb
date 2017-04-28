@@ -1,4 +1,8 @@
-<h1><%= @jampost.title %> <%= link_to "(edit)", edit_jampost_path(@jampost) %></h1>
+<h1><%= @jampost.title %></h1>
+
+<% if @jampost.user == current_user %>
+  <h3><%= link_to "(edit)", edit_jampost_path(@jampost) %></h3>
+<% end %>
 
 <%= image_tag @jampost.img_url %>
 <p>Location: <%= @jampost.location %></p>
@@ -22,8 +26,10 @@
   <p>
     <%= "#{comment.name}        - #{comment.body}" %>
   </p>
-  <%= link_to "Edit", edit_jampost_comment_path(@jampost, comment) %>
-  <%= link_to "Delete Comment", jampost_comment_path(@jampost, comment), method: :delete %>
+  <% if @jampost.user == current_user %>
+    <%= link_to "Edit", edit_jampost_comment_path(@jampost, comment) %>
+    <%= link_to "Delete Comment", jampost_comment_path(@jampost, comment), method: :delete %>
+  <% end %>
 <% end %>
 <hr>
 

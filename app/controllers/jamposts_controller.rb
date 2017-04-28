@@ -10,7 +10,7 @@ class JampostsController < ApplicationController
   end
   #create
   def create
-    @jampost = Jampost.create(jampost_params)
+    @jampost = current_user.jamposts.create!(jampost_params)
     redirect_to jampost_path(@jampost), notice: "Post Added!"
   end
   #show
@@ -32,8 +32,11 @@ class JampostsController < ApplicationController
 
   def destroy
     @jampost = Jampost.find(params[:id])
-    @jampost.destroy
-
+    if @jampost.user == current_user
+      @jampost.destroy
+    else
+      flash[:alert] = "Only the author of the post can delete"
+    end
     redirect_to jamposts_path
   end
 
