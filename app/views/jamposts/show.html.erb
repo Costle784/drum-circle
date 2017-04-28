@@ -1,10 +1,13 @@
 <h1><%= @jampost.title %> <%= link_to "(edit)", edit_jampost_path(@jampost) %></h1>
 
 <%= image_tag @jampost.img_url %>
-<p>Loctaion: <%= @jampost.location %></p>
+<p>Location: <%= @jampost.location %></p>
 <p><%= @jampost.body %></p>
-<%= @jampost.instruments.each do |instrument| %>
-  <h3><%= instrument.instrument %></h3>
+
+<% if @jampost.instruments %>
+  <% @jampost.instruments.each do |inst| %>
+    <h3><%= inst.instrument %></h3>
+  <% end %>
 <% end %>
 
 
