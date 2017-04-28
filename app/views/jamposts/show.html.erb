@@ -4,6 +4,12 @@
 <p>Location: <%= @jampost.location %></p>
 <p><%= @jampost.body %></p>
 
+<!-- if is_drumcircle = true
+  jampost.size_limit
+  else
+  jampost.skill_level
+  "These are the instruments for this jam, please check the one you play. If it's already checked, someone else has got it. If you'd like to bring a different instrument, leave a comment!" -->
+
 <% if @jampost.instruments %>
   <% @jampost.instruments.each do |inst| %>
     <h3><%= inst.instrument %></h3>
