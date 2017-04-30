@@ -15,21 +15,36 @@
  */
 body {
   text-align:center;
+  background-color:#82A52B;
+  background-size:cover;
 }
-
+h1, hr, h2, p, .title {
+  color: #FFFDAD;
+  text-decoration:none;
+  font-family: 'Averia Gruesa Libre', cursive;
+}
 h1 {
   font-size:50px;
 }
 hr {
   width:60%;
 }
-
 img {
   max-width: 600px;
 }
-
 .create {
   display:flex;
-  justify-content:space-around;
+  justify-content:center;
   margin-bottom: 40px;
+}
+.showtitle {
+  color:purple;
+  font-size:30px;
+}
+.showpostbody {
+  color:purple;
+}
+.homebutton {
+  color:#FFFDAD;
+  font-family: 'Averia Gruesa Libre', cursive;
 }

@@ -1,17 +1,16 @@
-<div class = 'create'>
-  <h2><%= link_to "Create a Jam Session", new_jampost_path %></h2>
-  <h2><%= link_to "Create a Drum Circle", new_jampost_path %></h2>
-</div>
+<% if current_user %>
+  <div class = 'create'>
+    <h2><%= link_to "Create a Jam Session  |", new_jampost_path, class: 'title'%></h2>
+    <h2><%= link_to "|   Create a Drum Circle", new_jampost_path(drumcircle: true), class: 'title'%></h2>
+  </div>
+<% end %>
 
 <% @jamposts.each do |jampost| %>
   <p>
-    <%= link_to jampost.title, jampost %>
+    <%= link_to jampost.title, jampost%>
   </p>
   <p>
     <%= image_tag jampost.img_url %>
   </p>
   <hr>
 <% end %>
-
-
-<!-- if user clicks drum circle is_drumcircle = true else false -->

@@ -2,24 +2,66 @@
   New Drum Circle!
   else -->
 
-<h2>Create a Band!</h2>
+<% if @jampost.is_drumcircle %>
+  <h2>Create your drum circle</h2>
 
-<%= form_for @jampost do |f| %>
-  <p>
-    <%= f.label "#{:title}:" %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label "#{:img_url}:" %>
-    <%= f.text_field :img_url %>
-  </p>
-  <p>
-    <%= f.label "#{:location}:" %>
-    <%= f.text_field :location %>
-  </p>
-  <p>
-    <%= f.label "#{:body}:" %>
-    <%= f.text_field :body %>
-  </p>
-  <%= f.submit %>
+  <%= form_for @jampost do |f| %>
+    <p>
+      <%= f.label "title:" %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label "photo url: (optional)" %>
+      <%= f.text_field :img_url %>
+    </p>
+    <p>
+      <%= f.label "location:" %>
+      <%= f.text_field :location %>
+    </p>
+    <p>
+      <%= f.label "description:" %>
+      <%= f.text_field :body %>
+    </p>
+    <p>
+      <%= f.label "size limit:" %>
+      <%= f.text_field :size_limit %>
+    </p>
+    <%= f.submit "Create my drum circle!" %>
+  <% end %>
+  <% else %>
+    <h2>Create your band</h2>
+
+    <%= form_for @jampost do |f| %>
+      <p>
+        <%= f.label "title:" %>
+        <%= f.text_field :title %>
+      </p>
+      <p>
+        <%= f.label "photo url: (optional)" %>
+        <%= f.text_field :img_url %>
+      </p>
+      <p>
+        <%= f.label "location:" %>
+        <%= f.text_field :location %>
+      </p>
+      <p>
+        <%= f.label "description:" %>
+        <%= f.text_field :body %>
+      </p>
+      <p>
+        <%= f.label "skill level (enter 1-5):" %>
+        <%= f.text_field :skill_level %>
+      </p>
+      <p>
+        <%= f.submit "Add" %>
+        <select id="selector"> %>
+            <option value="Rock Stars">Rock Stars</option> %>
+            <option value="Actors" selected="selected">Actors</option>
+            <option value="Movies">Movies</option>
+         </select>
+      </p>
+      <p>
+          <%= f.submit "Create my band!" %>
+      </p>
+    <% end %>
 <% end %>

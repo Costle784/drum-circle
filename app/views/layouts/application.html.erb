@@ -3,6 +3,7 @@
   <head>
     <title>DrumCircle</title>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Averia+Gruesa+Libre" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,16 +12,24 @@
   <body>
     <h1><%= "Drum Circle" %></h1>
     <% if !current_user %>
-      <%= link_to "Sign up", new_user_registration_path %>
+      <%= link_to "Sign up  |  ", new_user_registration_path %>
       <%= link_to "Sign in", new_user_session_path %>
     <% else %>
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <%= link_to "Sign out: ", destroy_user_session_path, :method => :delete %>
       <%= current_user.email %>
     <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to "Home", jamposts_path %>
+    <%= link_to "Home", jamposts_path, class: 'homebutton' %>
     <hr>
     <%= yield %>
+
+    <% content_for :footer do %>
+      <p><%= "\u00A9" "2017" %></p>
+    <% end %>
+    <%= yield :footer %>
+
+
+
   </body>
 </html>

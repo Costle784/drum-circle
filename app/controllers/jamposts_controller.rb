@@ -7,6 +7,9 @@ class JampostsController < ApplicationController
   #new
   def new
     @jampost = Jampost.new
+    if (params[:drumcircle])
+      @jampost.is_drumcircle = true
+    end
   end
   #create
   def create
