@@ -5,8 +5,9 @@
 <% end %>
 
 <%= image_tag @jampost.img_url %>
-<p><span class='showpostbody'>Location:</span><%= @jampost.location %></p>
-<p><%= @jampost.body %></p>
+<p><span class='showinfo'>Location: </span><%= @jampost.location %></p>
+<p><span class='showinfo'>Time: </span><%= @jampost.time %></p>
+<p><span class='showinfo'>About: </span><%= @jampost.body %></p>
 
 
 
@@ -20,7 +21,11 @@
 <h2>Comments</h2>
 <% @jampost.comments.each do |comment| %>
   <p>
-    <%= "#{comment.name}        - #{comment.body}" %>
+    <%= comment.body %>
+  </p>
+  <p class='commentinfo' >
+    <%= " -" + comment.name %>
+    <%= comment.created_at %>
   </p>
   <% if @jampost.user == current_user %>
     <%= link_to "Edit", edit_jampost_comment_path(@jampost, comment) %>
@@ -32,15 +37,15 @@
 <h2>Add Comment</h2>
 
 <%= form_for [@jampost, @comment] do |f| %>
-  <p>
-    <%= f.label "Name:" %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label "Comment:" %>
-    <%= f.text_field :body %>
-  </p>
-  <p>
+<p>
+  <%= f.label "name" %>
+  <%= f.text_field :name%>
+</p>
+<p>
+  <%= f.label "Comment:" %>
+  <%= f.text_field :body %>
+</p>
+<p>
     <%= f.submit "Add comment" %>
   </p>
 <% end %>

@@ -16,9 +16,8 @@
 body {
   text-align:center;
   background-color:#82A52B;
-  background-size:cover;
 }
-h1, hr, h2, p, .title {
+h1, hr, h2, p, .title, .signuplink {
   color: #FFFDAD;
   text-decoration:none;
   font-family: 'Averia Gruesa Libre', cursive;
@@ -35,16 +34,29 @@ img {
 .create {
   display:flex;
   justify-content:center;
-  margin-bottom: 40px;
+  margin:-25px;
 }
 .showtitle {
   color:purple;
   font-size:30px;
 }
-.showpostbody {
+.showinfo, .bar, .commentinfo {
   color:purple;
 }
 .homebutton {
   color:#FFFDAD;
   font-family: 'Averia Gruesa Libre', cursive;
+  text-decoration: none;
+}
+.indexposttitle{
+  text-decoration:none;
+  color: purple;
+  font-size: 25px;
+}
+.homecontainer, .bottomhr{
+  margin-bottom:30px;
+}
+.alert, .notice {
+  font-size:30px;
+  color:blue;
 }

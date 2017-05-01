@@ -12,15 +12,16 @@
   <body>
     <h1><%= "Drum Circle" %></h1>
     <% if !current_user %>
-      <%= link_to "Sign up  |  ", new_user_registration_path %>
-      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path, class:'signuplink' %>
+      <span class='bar'>  |  </span>
+      <%= link_to "Sign in", new_user_session_path, class:'signuplink' %>
     <% else %>
-      <%= link_to "Sign out: ", destroy_user_session_path, :method => :delete %>
+      <%= link_to "Sign out: ", destroy_user_session_path, class:'signuplink', :method => :delete %>
       <%= current_user.email %>
     <% end %>
+    <p class='homecontainer'><%= link_to "Home", jamposts_path, class: 'homebutton' %></p>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to "Home", jamposts_path, class: 'homebutton' %>
     <hr>
     <%= yield %>
 

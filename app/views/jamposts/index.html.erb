@@ -3,11 +3,12 @@
     <h2><%= link_to "Create a Jam Session  |", new_jampost_path, class: 'title'%></h2>
     <h2><%= link_to "|   Create a Drum Circle", new_jampost_path(drumcircle: true), class: 'title'%></h2>
   </div>
+  <hr class='bottomhr'>
 <% end %>
 
 <% @jamposts.each do |jampost| %>
   <p>
-    <%= link_to jampost.title, jampost%>
+    <%= link_to jampost.title, jampost, class:"indexposttitle"%>
   </p>
   <p>
     <%= image_tag jampost.img_url %>

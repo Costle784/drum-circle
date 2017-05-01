@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
   #create
   def create
-    puts "CREATE COMMENT"
     @jampost = Jampost.find(params[:jampost_id])
-    @comment = @jampost.comments.create!(comment_params)
+    @comment = @jampost.comments.new(comment_params)
+    @comment.user = current_user
+    @comment.save
     redirect_to jampost_path(@jampost)
   end
   #edit

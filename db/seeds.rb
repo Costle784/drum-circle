@@ -33,7 +33,8 @@ jampost1 = Jampost.create!({
   is_drumcircle: true,
   size_limit: nil,
   skill_level: nil,
-  user: curtis
+  user: curtis,
+  time: "6pm"
 })
 
 jampost2 = Jampost.create!({
@@ -44,7 +45,8 @@ jampost2 = Jampost.create!({
   is_drumcircle: false,
   size_limit:nil,
   skill_level:3,
-  user: rick
+  user: rick,
+  time: "7:30pm"
 })
 
 jampost3 = Jampost.create!({
@@ -55,7 +57,8 @@ jampost3 = Jampost.create!({
   is_drumcircle: false,
   size_limit:15,
   skill_level:2,
-  user: al
+  user: al,
+  time: "3pm"
 })
 
 arb_comment1 = Comment.create!({
