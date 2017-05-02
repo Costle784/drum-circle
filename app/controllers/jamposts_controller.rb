@@ -13,8 +13,13 @@ class JampostsController < ApplicationController
   end
   #create
   def create
-    @jampost = current_user.jamposts.create!(jampost_params)
-    redirect_to jampost_path(@jampost), notice: "Post Added!"
+    @jampost = current_user.jamposts.new(jampost_params)
+    if @jampost.save
+      redirect_to jampost_path(@jampost), notice: "Post Added!"
+    else
+      render :new
+    end
+
   end
   #show
   def show
@@ -45,6 +50,6 @@ class JampostsController < ApplicationController
 
   private
   def jampost_params
-    params.require(:jampost).permit(:title, :img_url, :location, :body)
+    params.require(:jampost).permit(:title, :img_url, :location, :body, :is_drumcircle,:size_limit,:skill_level,:time)
   end
 end

@@ -1,25 +1,57 @@
-<h2>Edit Your Post</h2>
+<% if @jampost.is_drumcircle %>
+  <h1 class ='createjam'>Edit drum circle</h1>
 
-<%= form_for @jampost do |f| %>
-  <p>
-    <%= f.label "#{:title}:" %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label "#{:img_url}:" %>
-    <%= f.text_field :img_url %>
-  </p>
-  <p>
-    <%= f.label "#{:location}:" %>
-    <%= f.text_field :location %>
-  </p>
-  <p>
-    <%= f.label "#{:body}:" %>
-    <%= f.text_field :body %>
-  </p>
-  <%= f.submit %>
+  <%= simple_form_for @jampost, :html=> {class: 'signuplink'} do |f| %>
+    <p>
+      <%= f.input :title, label: 'title:' %>
+    </p>
+    <p>
+      <%= f.input :location, label: 'location:' %>
+    </p>
+    <p>
+      <%= f.input :body, label: "description:" %>
+    </p>
+    <p>
+      <%= f.input :time, label: "time:" %>
+    </p>
+    <p>
+      <%= f.input :img_url, label: 'photo url:' %>
+    </p>
+    <%= f.hidden_field :is_drumcircle, value: true %>
+    <p>
+      <%= f.input :size_limit, label: "size limit:" %>
+    </p>
+    <%= f.button :submit, 'Update!', class: 'button'%>
+  <% end %>
+  <% else %>
+    <h1 class='createjam'>Edit jam session</h1>
+
+    <%= simple_form_for @jampost, :html => {class: 'signuplink'} do |f| %>
+      <p>
+        <%= f.input :title, label: "title:", class:'signuplink' %>
+      </p>
+      <p>
+        <%= f.input :location, label: "location:" %>
+      </p>
+      <p>
+        <%= f.input :body, label: "description:" %>
+      </p>
+      <p>
+        <%= f.input :time, label: "time: " %>
+      </p>
+      <p>
+        <%= f.input :img_url, label: "photo url:" %>
+      </p>
+      <p>
+        <%= f.input :skill_level, label: "skill level (enter 1-5):" %>
+      </p>
+
+      <p>
+          <%= f.button :submit, 'Update!', class: 'button'%>
+      </p>
+    <% end %>
 <% end %>
 
-  <%= form_for @jampost, method: :delete do |f| %>
-    <%= f.submit "Delete Post", class: "delete" %>
-  <% end %>  
+<%= form_for @jampost, method: :delete do |f| %>
+    <p><%= f.submit "Delete Post", class: "button" %></p>
+  <% end %>

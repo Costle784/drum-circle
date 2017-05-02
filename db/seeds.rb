@@ -31,7 +31,7 @@ jampost1 = Jampost.create!({
   location: "National Arboretum",
   body: "Join us this coming Friday for an epic drum circle. All wacky drums and other instruments welcome.",
   is_drumcircle: true,
-  size_limit: nil,
+  size_limit: 25,
   skill_level: nil,
   user: curtis,
   time: "6pm"

@@ -1,15 +1,17 @@
-<h1 class="showtitle"><%= @jampost.title %></h1>
-
 <% if @jampost.user == current_user %>
-  <h3><%= link_to "(edit)", edit_jampost_path(@jampost) %></h3>
+  <%= link_to "Edit", edit_jampost_path(@jampost), class:'homebutton' %>
 <% end %>
+
+<h1 class="showtitle"><%= @jampost.title %></h1>
 
 <%= image_tag @jampost.img_url %>
 <p><span class='showinfo'>Location: </span><%= @jampost.location %></p>
 <p><span class='showinfo'>Time: </span><%= @jampost.time %></p>
 <p><span class='showinfo'>About: </span><%= @jampost.body %></p>
 
-
+<% if @jampost.is_drumcircle && @jampost.size_limit %>
+<p><span class='showinfo'>Size Limit: </span> <%= @jampost.size_limit %> People</p>
+<% end %>
 
 <% if @jampost.instruments %>
   <% @jampost.instruments.each do |inst| %>
@@ -18,34 +20,29 @@
 <% end %>
 
 <hr>
-<h2>Comments</h2>
-<% @jampost.comments.each do |comment| %>
-  <p>
-    <%= comment.body %>
-  </p>
-  <p class='commentinfo' >
-    <%= " -" + comment.name %>
-    <%= comment.created_at %>
-  </p>
-  <% if @jampost.user == current_user %>
-    <%= link_to "Edit", edit_jampost_comment_path(@jampost, comment) %>
-    <%= link_to "Delete Comment", jampost_comment_path(@jampost, comment), method: :delete %>
+<% if @jampost.comments.length > 0 %>
+  <h2 class = 'commentstitle'>Comments</h2>
+  <% @jampost.comments.each do |comment| %>
+    <p>
+      <%= comment.body %>
+    </p>
+    <p class='commentinfo' >
+      <%= "-#{comment.user.email}" %>
+      <%= comment.created_at %>
+    </p>
+  <% if comment.user == current_user %>
+    <%= link_to "Edit", edit_jampost_comment_path(@jampost, comment),class:'homebutton' %>
   <% end %>
+  <% end %>
+  <hr class='shorthr'>
 <% end %>
 
 
-<h2>Add Comment</h2>
-
-<%= form_for [@jampost, @comment] do |f| %>
+<%= simple_form_for [@jampost, @comment], :html=> {class: 'signuplink'} do |f| %>
 <p>
-  <%= f.label "name" %>
-  <%= f.text_field :name%>
+  <%= f.input :body, label: "Comment: " %>
 </p>
 <p>
-  <%= f.label "Comment:" %>
-  <%= f.text_field :body %>
+  <%= f.submit "Add comment" , class: 'button' %>
 </p>
-<p>
-    <%= f.submit "Add comment" %>
-  </p>
 <% end %>

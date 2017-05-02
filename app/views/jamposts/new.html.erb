@@ -1,75 +1,53 @@
-<!-- if is_drumcircle is true
-  New Drum Circle!
-  else -->
-
 <% if @jampost.is_drumcircle %>
-  <h2>Create your drum circle</h2>
+  <h1 class ='createjam'>Create your drum circle</h1>
 
-  <%= form_for @jampost do |f| %>
+  <%= simple_form_for @jampost, :html=> {class: 'signuplink'} do |f| %>
     <p>
-      <%= f.label "title:" %>
-      <%= f.text_field :title %>
+      <%= f.input :title, label: 'title:' %>
     </p>
     <p>
-      <%= f.label "photo url: (optional)" %>
-      <%= f.text_field :img_url %>
+      <%= f.input :location, label: 'location:' %>
     </p>
     <p>
-      <%= f.label "location:" %>
-      <%= f.text_field :location %>
+      <%= f.input :body, label: "description:" %>
     </p>
     <p>
-      <%= f.label "time: " %>
-      <%= f.text_field :time %>
+      <%= f.input :time, label: "time:" %>
     </p>
     <p>
-      <%= f.label "description:" %>
-      <%= f.text_field :body %>
+      <%= f.input :img_url, label: 'photo url:' %>
     </p>
+    <%= f.hidden_field :is_drumcircle, value: true %>
     <p>
-      <%= f.label "size limit:" %>
-      <%= f.text_field :size_limit %>
+      <%= f.input :size_limit, label: "size limit:" %>
     </p>
-    <%= f.submit "Create my drum circle!" %>
+    <%= f.button :submit, 'Create', class: 'button'%>
   <% end %>
   <% else %>
-    <h2>Create your band</h2>
+    <h1 class='createjam'>Create your jam session</h1>
 
-    <%= form_for @jampost do |f| %>
+    <%= simple_form_for @jampost, :html => {class: 'signuplink'} do |f| %>
       <p>
-        <%= f.label "title:" %>
-        <%= f.text_field :title %>
+        <%= f.input :title, label: "title:", class:'signuplink' %>
       </p>
       <p>
-        <%= f.label "photo url: (optional)" %>
-        <%= f.text_field :img_url %>
+        <%= f.input :location, label: "location:" %>
       </p>
       <p>
-        <%= f.label "location:" %>
-        <%= f.text_field :location %>
+        <%= f.input :body, label: "description:" %>
       </p>
       <p>
-        <%= f.label "description:" %>
-        <%= f.text_field :body %>
+        <%= f.input :time, label: "time: " %>
       </p>
       <p>
-        <%= f.label "time: " %>
-        <%= f.text_field :time %>
+        <%= f.input :img_url, label: "photo url:" %>
       </p>
       <p>
-        <%= f.label "skill level (enter 1-5):" %>
-        <%= f.text_field :skill_level %>
+        <%= f.input :skill_level, label: "skill level (enter 1-5):" %>
       </p>
+
       <p>
-        <%= f.submit "Add" %>
-        <select id="selector"> %>
-            <option value="Rock Stars">Rock Stars</option> %>
-            <option value="Actors" selected="selected">Actors</option>
-            <option value="Movies">Movies</option>
-         </select>
-      </p>
-      <p>
-          <%= f.submit "Create my band!" %>
+          <%= f.button :submit, 'Create',class: 'button'%>
       </p>
     <% end %>
 <% end %>

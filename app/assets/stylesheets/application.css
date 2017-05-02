@@ -17,13 +17,19 @@ body {
   text-align:center;
   background-color:#82A52B;
 }
-h1, hr, h2, p, .title, .signuplink {
+h1, hr, h2,.title, .signuplink {
   color: #FFFDAD;
   text-decoration:none;
   font-family: 'Averia Gruesa Libre', cursive;
+  font-size:20px;
+}
+p {
+  color:#000;
+  font-family: 'Averia Gruesa Libre', cursive;
+  font-size:20px;
 }
 h1 {
-  font-size:50px;
+  font-size:65px;
 }
 hr {
   width:60%;
@@ -37,26 +43,44 @@ img {
   margin:-25px;
 }
 .showtitle {
-  color:purple;
-  font-size:30px;
-}
-.showinfo, .bar, .commentinfo {
-  color:purple;
-}
-.homebutton {
   color:#FFFDAD;
+  font-size:30px;
+  text-decoration: underline;
+}
+.showinfo {
+  color:#FFFDAD;
+  font-size:20px;
+}
+.bar, .commentinfo{
+  color:purple;
+}
+
+.homebutton {
+  color:#B23C2E;
   font-family: 'Averia Gruesa Libre', cursive;
-  text-decoration: none;
 }
-.indexposttitle{
-  text-decoration:none;
-  color: purple;
-  font-size: 25px;
-}
-.homecontainer, .bottomhr{
+.homecontainer, .bottomhr {
   margin-bottom:30px;
 }
-.alert, .notice {
-  font-size:30px;
-  color:blue;
+.alert, .notice, .button {
+  font-size:40px;
+  color:#B23C2E;
+}
+.createjam {
+  color:#FFFDAD;
+  font-family: 'Averia Gruesa Libre', cursive;
+  font-size:40px;
+}
+.commentstitle {
+  color:#FFFDAD;
+  font-family: 'Averia Gruesa Libre', cursive;
+  text-decoration: underline;
+}
+.commentinfo {
+  font-size: 14px;
+  font-style: italic;
+  color:#000;
+}
+.shorthr {
+  width:30%;
 }

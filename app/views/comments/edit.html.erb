@@ -1,15 +1,14 @@
-<h1>Edit Comment</h1>
+<h1 class='createjam'>Edit Comment</h1>
 
-<%= form_for [@jampost, @comment] do |f| %>
-  <p>
-    <%=  f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%=  f.label :body %>
-    <%= f.text_field :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>  
+<%= simple_form_for [@jampost, @comment], :html=> {class: 'signuplink'} do |f| %>
+<p>
+  <%= f.input :body, label: "Comment: " %>
+</p>
+<p>
+  <%= f.submit "Update!" , class: 'button' %>
+</p>
+<% end %>
+
+<%= simple_form_for [@jampost,@comment], method: :delete do |f| %>
+  <p><%= f.submit "Delete", class: "button" %></p>
 <% end %>
