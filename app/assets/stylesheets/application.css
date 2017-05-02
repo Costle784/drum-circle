@@ -47,7 +47,7 @@ img {
   font-size:30px;
   text-decoration: underline;
 }
-.showinfo {
+.showinfo, .instrument {
   color:#FFFDAD;
   font-size:20px;
 }
@@ -83,4 +83,20 @@ img {
 }
 .commentbody {
   font-family: serif;
+}
+.bandbox {
+  display:flex;
+  justify-content: center;
+}
+.bandtitle {
+  text-decoration: underline;
+}
+.instrument {
+  color:#B23C2E;
+  font-family: 'Averia Gruesa Libre', cursive;
+}
+label.select.optional {
+  color:#FFFDAD;
+  font-size:20px;
+  font-family: 'Averia Gruesa Libre', cursive;
 }

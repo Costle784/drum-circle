@@ -7,12 +7,17 @@ class InstrumentsController < ApplicationController
     redirect_to jampost_path(@jampost)
   end
 
+  
+
   def destroy
     @jampost = Jampost.find(params[:jampost_id])
     @instrument = @jampost.instruments.find(params[:id])
     @instrument.destroy
     redirect_to jampost_path(@jampost)
   end
+
+
+
 
   private
   def instrument_params

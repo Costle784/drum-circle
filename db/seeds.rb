@@ -105,23 +105,28 @@ reno_comment2 = Comment.create!({
 
 bass = Instrument.create!({
   instrument: 'Bass',
-  jampost: jampost2
+  jampost: jampost2,
+  user: curtis
 })
 
 keyboard = Instrument.create!({
   instrument: 'Keyboard',
-  jampost: jampost2
+  jampost: jampost2,
+  user: al
 })
 
 drums = Instrument.create!({
   instrument: 'Drums',
-  jampost: jampost2
+  jampost: jampost2,
+  user: al
 })
 guitar = Instrument.create!({
   instrument: 'Guitar',
-  jampost: jampost2
+  jampost: jampost2,
+  user: rick
 })
 saxophone = Instrument.create!({
   instrument: 'Saxophone',
-  jampost: jampost2
+  jampost: jampost2,
+  user: rick
 })

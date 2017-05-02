@@ -1,4 +1,4 @@
-<% if @jampost.user == current_user %>
+<% if @jampost.user == current_user && current_user %>
   <%= link_to "Edit", edit_jampost_path(@jampost), class:'homebutton' %>
 <% end %>
 
@@ -13,27 +13,37 @@
   <p><span class='showinfo'>Size Limit: </span> <%= @jampost.size_limit %> People</p>
 <% end %>
 
-<% if !(@jampost.is_drumcircle) && @jampost.user == current_user%>
-
+<% if !(@jampost.is_drumcircle) && @jampost.user == current_user && current_user%>
+  <h2 class='bandtitle'> Your Current Band is: </h2>
+    <br>
+    <div class = 'bandbox'>
+    <% @jampost.instruments.each do |inst| %>
+      <div class ='instrument'><%= inst.instrument %></div>
+      <%= form_for [@jampost, inst], method: :delete do |f| %>
+        <%= f.submit "remove", class: "removebutton" %>
+        <span>,&nbsp;&nbsp;</span>
+      <% end %>
+    <% end %>
+  </div>
   <%= simple_form_for [@jampost, @instrument] do |f| %>
     <p>
-      <%= f.input :instrument, label: 'Instruments:', collection: ['bass','drums','keyboard','percussion','vocals','guitar','cowbell','other'], prompt: 'Please select!' %>
+      <%= f.input :instrument, label: 'Instruments:', collection: ['bass','drums','keyboard','percussion','vocals','guitar','cowbell','other'], prompt: 'Please select!', :class => 'showinfo' %>
     </p>
     <p>
       <%= f.submit 'ADD', class: 'button', method: :create  %>
     </p>
   <% end %>
+  <% elsif !(@jampost.is_drumcircle) && @jampost.user != current_user %>
+  <% @jampost.instruments.each do |inst| %>
+    <div class ='instrument'><%= inst.instrument %></div>
+    <%= form_for [@jampost, inst], method: :post do |f| %>
+      <%= f.submit "sign up!" %>
+      <% end %>
+      <% end %>
 <% end %>
 
-<% if @jampost.instruments %>
-  <h2> Your Current Band is: </h2>
-  <% @jampost.instruments.each do |inst| %>
-    <h4><%= inst.instrument %></h4>
-    <%= form_for [@jampost, inst], method: :delete do |f| %>
-      <%= f.submit "remove", class: "button" %>
-    <% end %>
-  <% end %>
-<% end %>
+
+
 
 
 
@@ -49,11 +59,10 @@
       <%= comment.body %>
     </p>
     <p class='commentinfo' >
-      <%= "-#{comment.user.email}" %>
       <%= comment.created_at %>
     </p>
     <br>
-  <% if comment.user == current_user %>
+  <% if comment.user == current_user && current_user %>
     <%= link_to "Edit", edit_jampost_comment_path(@jampost, comment),class:'homebutton' %>
   <% end %>
   <% end %>
