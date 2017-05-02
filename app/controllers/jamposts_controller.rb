@@ -25,6 +25,7 @@ class JampostsController < ApplicationController
   def show
     @jampost = Jampost.find(params[:id])
     @comment = Comment.new
+    @instrument = Instrument.new
   end
   #edit
   def edit

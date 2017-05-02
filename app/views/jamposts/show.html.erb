@@ -10,26 +10,49 @@
 <p><span class='showinfo'>About: </span><%= @jampost.body %></p>
 
 <% if @jampost.is_drumcircle && @jampost.size_limit %>
-<p><span class='showinfo'>Size Limit: </span> <%= @jampost.size_limit %> People</p>
+  <p><span class='showinfo'>Size Limit: </span> <%= @jampost.size_limit %> People</p>
+<% end %>
+
+<% if !(@jampost.is_drumcircle) && @jampost.user == current_user%>
+
+  <%= simple_form_for [@jampost, @instrument] do |f| %>
+    <p>
+      <%= f.input :instrument, label: 'Instruments:', collection: ['bass','drums','keyboard','percussion','vocals','guitar','cowbell','other'], prompt: 'Please select!' %>
+    </p>
+    <p>
+      <%= f.submit 'ADD', class: 'button', method: :create  %>
+    </p>
+  <% end %>
 <% end %>
 
 <% if @jampost.instruments %>
+  <h2> Your Current Band is: </h2>
   <% @jampost.instruments.each do |inst| %>
-    <h3><%= inst.instrument %></h3>
+    <h4><%= inst.instrument %></h4>
+    <%= form_for [@jampost, inst], method: :delete do |f| %>
+      <%= f.submit "remove", class: "button" %>
+    <% end %>
   <% end %>
 <% end %>
+
+
+
+
+
+
 
 <hr>
 <% if @jampost.comments.length > 0 %>
   <h2 class = 'commentstitle'>Comments</h2>
   <% @jampost.comments.each do |comment| %>
-    <p>
+    <p class='commentbody'>
       <%= comment.body %>
     </p>
     <p class='commentinfo' >
       <%= "-#{comment.user.email}" %>
       <%= comment.created_at %>
     </p>
+    <br>
   <% if comment.user == current_user %>
     <%= link_to "Edit", edit_jampost_comment_path(@jampost, comment),class:'homebutton' %>
   <% end %>

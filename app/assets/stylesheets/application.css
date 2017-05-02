@@ -24,8 +24,8 @@ h1, hr, h2,.title, .signuplink {
   font-size:20px;
 }
 p {
-  color:#000;
   font-family: 'Averia Gruesa Libre', cursive;
+  color:#000;
   font-size:20px;
 }
 h1 {
@@ -50,9 +50,6 @@ img {
 .showinfo {
   color:#FFFDAD;
   font-size:20px;
-}
-.bar, .commentinfo{
-  color:purple;
 }
 
 .homebutton {
@@ -83,4 +80,7 @@ img {
 }
 .shorthr {
   width:30%;
+}
+.commentbody {
+  font-family: serif;
 }
