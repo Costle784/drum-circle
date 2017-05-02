@@ -100,3 +100,8 @@ label.select.optional {
   font-size:20px;
   font-family: 'Averia Gruesa Libre', cursive;
 }
+.takeninstrument {
+  color:#B23C2E;
+  font-family: 'Averia Gruesa Libre', cursive;
+  text-decoration: line-through;
+}

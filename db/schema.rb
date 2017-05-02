@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502173800) do
+ActiveRecord::Schema.define(version: 20170502192122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,11 @@ ActiveRecord::Schema.define(version: 20170502173800) do
     t.boolean  "is_drumcircle"
     t.integer  "size_limit"
     t.integer  "skill_level"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "user_id"
     t.string   "time"
+    t.string   "current_members"
     t.index ["user_id"], name: "index_jamposts_on_user_id", using: :btree
   end
 

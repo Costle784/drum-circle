@@ -9,8 +9,15 @@
 <p><span class='showinfo'>Time: </span><%= @jampost.time %></p>
 <p><span class='showinfo'>About: </span><%= @jampost.body %></p>
 
+<% if @jampost.is_drumcircle%>
+  <p><span class='showinfo'>Current Members: </span> <%= @jampost.current_members %></p>
+<% end %>
+
 <% if @jampost.is_drumcircle && @jampost.size_limit %>
   <p><span class='showinfo'>Size Limit: </span> <%= @jampost.size_limit %> People</p>
+  <%= form_for @jampost, method: :put do |f| %>
+    <%= f.submit "Join!" %>
+  <% end %>
 <% end %>
 
 <% if !(@jampost.is_drumcircle) && @jampost.user == current_user && current_user%>
@@ -33,24 +40,25 @@
       <%= f.submit 'ADD', class: 'button', method: :create  %>
     </p>
   <% end %>
-  <% elsif !(@jampost.is_drumcircle) && @jampost.user != current_user %>
-  <% @jampost.instruments.each do |inst| %>
-    <div class ='instrument'><%= inst.instrument %></div>
-    <%= form_for [@jampost, inst], method: :post do |f| %>
-      <%= f.submit "sign up!" %>
+  <% elsif !(@jampost.is_drumcircle) && @jampost.user != current_user || !current_user && !(@jampost.is_drumcircle) %>
+    <h2> Here are the instruments still available: </h2>
+    <div class = 'bandbox'>
+    <% @jampost.instruments.each do |inst| %>
+      <% if !inst.user %>
+        <div class ='instrument'>
+          <%= inst.instrument %>
+        </div>
+        <%= form_for [@jampost, inst], method: :put do |f| %>
+          <%= f.submit "sign up!" %><span>,</span>
+        <% end %>
+      <% else %>
+      <div class ='takeninstrument'>
+        <%= inst.instrument %>,
+      </div>
       <% end %>
-      <% end %>
+    <% end %>
+    </div>
 <% end %>
-
-
-
-
-
-
-
-
-
-
 <hr>
 <% if @jampost.comments.length > 0 %>
   <h2 class = 'commentstitle'>Comments</h2>

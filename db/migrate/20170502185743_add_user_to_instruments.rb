@@ -1,4 +1,4 @@
-class AddInstrumentsToUsers < ActiveRecord::Migration[5.0]
+class AddUserToInstruments < ActiveRecord::Migration[5.0]
   def change
     add_reference :instruments, :user, foreign_key: true
   end

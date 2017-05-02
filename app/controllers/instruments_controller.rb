@@ -7,7 +7,13 @@ class InstrumentsController < ApplicationController
     redirect_to jampost_path(@jampost)
   end
 
-  
+  def update
+    @jampost = Jampost.find(params[:jampost_id])
+    @instrument = @jampost.instruments.find(params[:id])
+    @instrument.user = current_user
+    @instrument.save
+    redirect_to :back
+  end
 
   def destroy
     @jampost = Jampost.find(params[:jampost_id])

@@ -34,7 +34,8 @@ jampost1 = Jampost.create!({
   size_limit: 25,
   skill_level: nil,
   user: curtis,
-  time: "6pm"
+  time: "6pm",
+  current_members:10
 })
 
 jampost2 = Jampost.create!({
@@ -106,27 +107,47 @@ reno_comment2 = Comment.create!({
 bass = Instrument.create!({
   instrument: 'Bass',
   jampost: jampost2,
-  user: curtis
 })
 
 keyboard = Instrument.create!({
   instrument: 'Keyboard',
   jampost: jampost2,
-  user: al
 })
 
 drums = Instrument.create!({
   instrument: 'Drums',
   jampost: jampost2,
-  user: al
 })
 guitar = Instrument.create!({
   instrument: 'Guitar',
   jampost: jampost2,
-  user: rick
 })
 saxophone = Instrument.create!({
   instrument: 'Saxophone',
   jampost: jampost2,
-  user: rick
+})
+
+guitar1 = Instrument.create!({
+  instrument: 'Guitar',
+  jampost: jampost3,
+})
+
+guitar2 = Instrument.create!({
+  instrument: 'Guitar',
+  jampost: jampost3,
+})
+
+guitar3 = Instrument.create!({
+  instrument: 'Guitar',
+  jampost: jampost3,
+})
+
+guitar4 = Instrument.create!({
+  instrument: 'Guitar',
+  jampost: jampost3,
+})
+
+guitar5 = Instrument.create!({
+  instrument: 'Guitar',
+  jampost: jampost3,
 })
