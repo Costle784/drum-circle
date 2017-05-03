@@ -1,24 +1,10 @@
-# README
+Technologies used:
+rails, ruby, devise, postgresql, ActiveRecord
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Drum Circle is an app designed to connect musicians who are looking to jam. It makes it easier to find and organize jam sessions without having to go sit-in with bands at open mics or stay up all night in smoky jazz clubs in order to meet people and play. Instead, you can do everything from your couch.
 
-Things you may want to cover:
+One can either create a new jam session, a new drum circle, or join an existing one.
 
-* Ruby version
+The app uses devise to create users who have the ability to perform 'full crud' (create,read,update,delete) on Jamposts and Comments.   
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Jamposts are highly customizable to suit your needs.

@@ -51,6 +51,6 @@ class JampostsController < ApplicationController
 
   private
   def jampost_params
-    params.require(:jampost).permit(:title, :img_url, :location, :body, :is_drumcircle,:size_limit,:skill_level,:time)
+    params.require(:jampost).permit(:title, :img_url, :location, :body, :is_drumcircle,:size_limit,:skill_level,:time, :current_members)
   end
 end

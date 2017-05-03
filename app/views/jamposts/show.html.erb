@@ -20,7 +20,7 @@
   <% end %>
 <% end %>
 
-<% if !(@jampost.is_drumcircle) && @jampost.user == current_user && current_user%>
+<% if !@jampost.is_drumcircle && @jampost.user == current_user && current_user%>
   <h2 class='bandtitle'> Your Current Band is: </h2>
     <br>
     <div class = 'bandbox'>
@@ -34,7 +34,7 @@
   </div>
   <%= simple_form_for [@jampost, @instrument] do |f| %>
     <p>
-      <%= f.input :instrument, label: 'Instruments:', collection: ['bass','drums','keyboard','percussion','vocals','guitar','cowbell','other'], prompt: 'Please select!', :class => 'showinfo' %>
+      <%= f.input :instrument, label: 'Instruments:', collection: ['bass','drums','keyboard','percussion','vocals','guitar','cowbell','saxophone','trumpet'], prompt: 'Please select!', :class => 'showinfo' %>
     </p>
     <p>
       <%= f.submit 'ADD', class: 'button', method: :create  %>
