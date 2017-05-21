@@ -1,17 +1,19 @@
 class JampostsController < ApplicationController
+  # Removed method-name comments, redundant
+  # Additionaly there was no whitespace between the method definition
+  # and comment, it hard to distinguish method boundaries at a glance.
 
-  #index
   def index
     @jamposts = Jampost.all
   end
-  #new
+
   def new
     @jampost = Jampost.new
     if (params[:drumcircle])
       @jampost.is_drumcircle = true
     end
   end
-  #create
+
   def create
     @jampost = current_user.jamposts.new(jampost_params)
     if @jampost.save
@@ -19,19 +21,23 @@ class JampostsController < ApplicationController
     else
       render :new
     end
-
   end
-  #show
+
+  # edited to prevent showing sign-up buttons when user alrady chose an instrument
   def show
     @jampost = Jampost.find(params[:id])
+    user_pledged_instruments = @jampost.instruments.select{|i|
+        i.user == current_user
+    }
+    @already_chose_an_instrument = user_pledged_instruments.length > 0
     @comment = Comment.new
     @instrument = Instrument.new
   end
-  #edit
+
   def edit
     @jampost = Jampost.find(params[:id])
   end
-  #update
+
   def update
     @jampost = Jampost.find(params[:id])
     @jampost.update(jampost_params)

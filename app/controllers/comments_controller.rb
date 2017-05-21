@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
-  #create
+  # Removed method-name comments, redundant
+  # Additionaly there was no whitespace between the method definition
+  # and comment, it hard to distinguish method boundaries at a glance.
+
   def create
     @jampost = Jampost.find(params[:jampost_id])
     @comment = @jampost.comments.new(comment_params)
@@ -7,19 +10,19 @@ class CommentsController < ApplicationController
     @comment.save
     redirect_to jampost_path(@jampost)
   end
-  #edit
+
   def edit
     @jampost = Jampost.find(params[:jampost_id])
     @comment = @jampost.comments.find(params[:id])
   end
-  #update
+
   def update
     @jampost = Jampost.find(params[:jampost_id])
     @comment = @jampost.comments.find(params[:id])
     @comment.update(comment_params)
     redirect_to jampost_path(@jampost)
   end
-  #destroy
+
   def destroy
     @jampost = Jampost.find(params[:jampost_id])
     @comment = @jampost.comments.find(params[:id])
