@@ -48,13 +48,42 @@
         <div class ='instrument'>
           <%= inst.instrument %>
         </div>
+      <%
+      # Wrapping the form button in an if statement allows you
+      # prevent displaying the button if the user already selected
+      # an instrument on this jam.
+      # See: app/controllers/jamposts_controller.rb
+      #
+      # My suggestion here is an incomplete solution, though. Imagine if the user
+      # had opened up the jam page in multiple tabs, they'd have extra copies of
+      # the page and buttons which they could still use (accidentally or otherwise)
+      # to sign up for the remaining instruments.
+      #
+      # More work would be needed in the jamposts controller to prevent extra
+      # instrument sign ups from being accepted.
+      if !@already_chose_an_instrument %>
         <%= form_for [@jampost, inst], method: :put do |f| %>
           <%= f.submit "sign up!" %><span>,</span>
         <% end %>
+      <% end %>
       <% else %>
-      <div class ='takeninstrument'>
-        <%= inst.instrument %>,
+      <%
+      # Here using two css classes for your taken instrument, allows you to keep all of
+      # the existing style from `.instrment`, and add an extra class just for the
+      # modifications when marking as taken
+      %>
+      <div class ='taken instrument'>
+        <%= inst.instrument %>
       </div>
+      <%
+      # A way to release their chosen instrument might be useful if
+      # the musician changes their mind.
+      # See: app/controllers/instruments_controller.rb for changes there
+      %>
+        <%= form_for [@jampost, inst], method: :put do |f| %>
+          <%= f.hidden_field :release, :value => true %>
+          <%= f.submit "Release #{inst.instrument}" %><span>,</span>
+        <% end %>
       <% end %>
     <% end %>
     </div>

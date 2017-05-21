@@ -94,14 +94,21 @@ img {
 .instrument {
   color:#B23C2E;
   font-family: 'Averia Gruesa Libre', cursive;
+  margin-left: 5px;
 }
 label.select.optional {
   color:#FFFDAD;
   font-size:20px;
   font-family: 'Averia Gruesa Libre', cursive;
 }
-.takeninstrument {
-  color:#B23C2E;
-  font-family: 'Averia Gruesa Libre', cursive;
+/*
+since .instrument is defined in a few css classes above
+to keep those styles for your .takeninstrument as well is
+to just use .instrument in your taken divs and add an extra
+class .taken to add only the strike-out like this:
+
+<div class="instrument taken">
+*/
+.taken {
   text-decoration: line-through;
 }
